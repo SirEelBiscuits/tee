@@ -1,20 +1,10 @@
-/*
- * Working docs
- *
- * Ideal usecase:
- *
- * Test(groupname, testname) {
- *	check a thing
- *	return TEST_SUCCESS;
- * }
- */
-
 #include <vector>
 #include <string>
 
 class TestInterface {
-	virtual void Run() = 0;
-	virtual std::string GetName() const = 0;
+	public:
+		virtual void Run() = 0;
+		virtual std::string GetName() const = 0;
 };
 
 class TestsHolder {
@@ -24,7 +14,7 @@ class TestsHolder {
 			return o;
 		}
 
-		void AddTest(Test& test) {
+		void AddTest(TestInterface& test) {
 			tests.push_back(&test);
 		}
 
@@ -32,34 +22,49 @@ class TestsHolder {
 			fails.emplace_back(fail);
 		}
 
+		void AddSuccess() {
+			++successCount;
+		}
+
 		void RunAllTests() {
 			for(auto t : tests)
 				t->Run();
 		}
 
-		std::vector<std::string const> const& GetFails() {
+		std::vector<std::string> const& GetFails() const {
 			return fails;
 		}
 
+		int GetSuccesses() const {
+			return successCount;
+		}
+
 	private:
-		std::vector<Test*> tests {};
+		std::vector<TestInterface*> tests {};
 		std::vector<std::string> fails {};
+		int successCount{};
 };
 
-#define Tee_Test(name)                                 \
-	class Test_#name : public TestInterface {            \
-		public:                                            \
-			Test_#name() {                                   \
-				TestsHolder.Instance().AddTest(*this);         \
-			}                                                \
-			std::string GetName() override { return #name; } \
-			void Run() override;                             \
-	}                                                    \
-	void Test_#name::Run()
+#define Tee_Test(name)                                       \
+	class Test_##name : public TestInterface {                 \
+		public:                                                  \
+			Test_##name() {                                        \
+				TestsHolder::Instance().AddTest(*this);              \
+			}                                                      \
+			std::string GetName() const override { return #name; } \
+			void Run() override;                                   \
+	};                                                         \
+	static Test_##name Instance_##name;                        \
+	void Test_##name::Run()
 
-#define assert(condition)           \
-	if(condition != true) {           \
-		TestsHolder.Instance().AddFail( \
-				__FILE__ "(" __LINE__ "): " \
-				+ GetName + "-" condition); \
-	}                                 \
+#define S(x) #x
+#define S_(x) S(x)
+#define S__LINE__ S_(__LINE__)
+
+#define assert(condition)                         \
+	if(condition != true) {                         \
+		TestsHolder::Instance().AddFail(              \
+				__FILE__ "(" S__LINE__ "): "              \
+				+ GetName() + " - " + #condition + "\n"); \
+	} else TestsHolder::Instance().AddSuccess();
+
