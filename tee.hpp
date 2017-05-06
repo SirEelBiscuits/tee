@@ -45,7 +45,7 @@ public:
 		private:
 			std::vector<TestInterface*> tests {};
 			std::vector<std::string> fails {};
-			int successCount{};
+			int successCount {};
 	};
 
 	static std::pair<int, std::vector<std::string>> RunAllTests() {
