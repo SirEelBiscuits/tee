@@ -59,22 +59,33 @@ public:
 
 #define Tee_Test(name) \
 	class Test_##name : public Tee::TestInterface { \
+		std::string _name{#name}; \
+		std::string _subname{}; \
 		public: \
 			Test_##name() { \
 				Tee::TestsHolder::Instance().AddTest(*this); \
 			} \
-			std::string GetName() const override { return #name; } \
+			std::string GetName() const override { \
+				if(_subname.length() > 0) \
+					return _name + ": " + _subname; \
+				else \
+					return _name; \
+			} \
 			void Run() override; \
 	}; \
 	static Test_##name Instance_##name; \
 	void Test_##name::Run()
+
+#define Tee_SubTest(name) \
+	_subname = #name; \
+
 
 #define S(x) #x
 #define S_(x) S(x)
 #define S__LINE__ S_(__LINE__)
 
 #define assert(condition) \
-	if(condition != true) { \
+	if((condition) != true) { \
 		Tee::TestsHolder::Instance().AddFail( \
 				__FILE__ "(" S__LINE__ "): " \
 				+ GetName() + " - " + #condition + "\n"); \

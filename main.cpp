@@ -22,6 +22,25 @@ Tee_Test(failed_test_fails) {
 	assert(false);
 }
 
+Tee_Test(test_sub_tests) {
+	std::cout << GetName() << " running" << std::endl;
+
+	Tee_SubTest(sub_test_one_success) {
+		std::cout << GetName() << " running" << std::endl;
+		assert(true);
+	}
+
+	Tee_SubTest(sub_test_two_success) {
+		std::cout << GetName() << " running" << std::endl;
+		assert(3 + 3 == 6);
+	}
+
+	Tee_SubTest(sub_test_three_fails) {
+		std::cout << GetName() << " running" << std::endl;
+		assert(false && "what");
+	}
+}
+
 int main() {
 	int successes;
 	std::vector<std::string> fails;
@@ -30,6 +49,6 @@ int main() {
 		std::cout << f;
 
 	std::cout << successes << " successes, "
-		<< fails.size() << " failures (3 expected).";
-	return fails.size() == 3 ? EXIT_SUCCESS : EXIT_FAILURE;
+		<< fails.size() << " failures (4 expected).";
+	return fails.size() == 4 ? EXIT_SUCCESS : EXIT_FAILURE;
 }

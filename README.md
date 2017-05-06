@@ -33,6 +33,19 @@ Tee_Test(name_of_test_here) {
 The name of the test given must be unique. You may have any number of
 assertions per test.
 
+```cpp
+Tee_Test(name_of_test) {
+	//do setup
+	Tee_SubTest(name_of_sub_test) {
+		assert(something);
+	}
+	//do teardown
+}
+```
+
+Subtests are also possible, if you want to group tests together, maybe to
+share objects between them
+
 ### Testing the defined tests
 
 ```cpp
@@ -71,7 +84,10 @@ Future Work
 -----------
 
 - Have `Tee_Test` disableable with a `#define`
-- Add test groups
+- Have sub tests nestable
+- Output options
+	- print as you go
+	- verbose output - list tests, groups, fails and passes
 
 Known Issues
 ------------
