@@ -15,7 +15,7 @@ Tee_Test(failing_one_assert_when_testing_two_produces_one_error) {
 	std::cout << GetName() << " running" << std::endl;
 	assert(2 + 2 == 4);
 	assert(2 + 2 == 5);
-};
+}
 
 Tee_Test(failed_test_fails) {
 	std::cout << GetName() << " running" << std::endl;
