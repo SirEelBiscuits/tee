@@ -8,7 +8,7 @@ A simple testing framework for C++
 Author
 ------
 
-J Thatcher - @SirEelBiscuits
+J Thatcher - @SirEelBiscuits - jameson@bluescreenofdoom.com
 
 Usage
 -----
@@ -49,6 +49,13 @@ See the [code](main.cpp) for a version with testable tests!
 ### Integrating with a project
 
 Just include the header file wherever you want to write tests. Nothing else is needed.
+
+Building Tests
+--------------
+
+The included tests can be run simply by compiling main.cpp.
+It has been tested with g++ version 5.4.
+You might build it with the command `g++ main.cpp -std=c++14 -o tee`.
 
 Future Work
 -----------
