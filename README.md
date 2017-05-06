@@ -10,6 +10,14 @@ Author
 
 J Thatcher - @SirEelBiscuits - jameson@bluescreenofdoom.com
 
+Prerequisites
+-------------
+
+- A C++11 compatible compiler.
+
+Otherwise Tee only depends on the standard library.
+Tee has been tested with g++ 5.4 and 6.3. 
+
 Usage
 -----
 
@@ -22,7 +30,8 @@ Tee_Test(name_of_test_here) {
 }
 ```
 
-The name of the test given must be unique. You may have any number of assertions per test.
+The name of the test given must be unique. You may have any number of
+assertions per test.
 
 ### Testing the defined tests
 
@@ -48,7 +57,8 @@ See the [code](main.cpp) for a version with testable tests!
 
 ### Integrating with a project
 
-Just include the header file wherever you want to write tests. Nothing else is needed.
+Just include the header file wherever you want to write tests. Nothing else
+is needed.
 
 Building Tests
 --------------
@@ -61,6 +71,7 @@ Future Work
 -----------
 
 - Have `Tee_Test` disableable with a `#define`
+- Add test groups
 
 Known Issues
 ------------
