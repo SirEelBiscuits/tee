@@ -23,6 +23,11 @@ Tee has been tested with g++ 5.4 and 6.3.
 Usage
 -----
 
+### Integrating with a project
+
+Just include the header file wherever you want to write tests. Nothing else
+is needed.
+
 ### Defining a test
 
 ```cpp
@@ -49,11 +54,6 @@ Tee_Test(name_of_test) {
 
 Subtests are also possible, if you want to group tests together, maybe to
 share objects between them
-
-### Integrating with a project
-
-Just include the header file wherever you want to write tests. Nothing else
-is needed.
 
 ### Testing the defined tests
 
