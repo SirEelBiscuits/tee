@@ -5,6 +5,8 @@ TDD++
 
 A simple testing framework for C++
 
+[![Build Status](https://api.travis-ci.org/SirEelBiscuits/tee.svg?branch=master)](https://travis-ci.org/SirEelBiscuits/tee)
+
 Author
 ------
 
