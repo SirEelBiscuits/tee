@@ -61,7 +61,11 @@ share objects between them
 #include <vector>
 #include <string>
 #include <tuple>
+#include <iostrea>
+#include <cstdlib>
 #include "tee.hpp"
+
+using namespace std;
 
 int main() {
 	int successes;
