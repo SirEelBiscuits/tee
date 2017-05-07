@@ -49,6 +49,6 @@ int main() {
 		std::cout << f;
 
 	std::cout << successes << " successes, "
-		<< fails.size() << " failures (4 expected).";
+		<< fails.size() << " failures (4 expected)." << std::endl;
 	return fails.size() == 4 ? EXIT_SUCCESS : EXIT_FAILURE;
 }
