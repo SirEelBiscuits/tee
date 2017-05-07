@@ -2,8 +2,7 @@
 #include <string>
 #include <tuple>
 
-class Tee {
-public:
+namespace Tee {
 	class TestInterface {
 		public:
 			virtual void Run() = 0;
@@ -55,7 +54,7 @@ public:
 			TestsHolder::Instance().GetFails()
 		);
 	}
-};
+}
 
 #define Tee_Test(name) \
 	class Test_##name : public Tee::TestInterface { \

@@ -20,10 +20,8 @@ $(TARGET): $(SRC_FILES)
 	@echo "Done"
 
 clean:
-	@echo "Cleaning intermediate files"
-	@rm -rf $(OBJ_DIR)
-	@echo "Cleaning output files"
-	@rm -rf $(OUT_DIR)
+	@echo "Cleaning"
+	@rm $(TARGET)
 	@echo "Done"
 
 .PHONY: clean 
