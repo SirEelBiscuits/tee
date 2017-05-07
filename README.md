@@ -3,7 +3,7 @@ Tee
 
 TDD++
 
-A simple testing framework for C++
+A very simple testing framework for C++
 
 [![Build Status](https://api.travis-ci.org/SirEelBiscuits/tee.svg?branch=master)](https://travis-ci.org/SirEelBiscuits/tee)
 
@@ -35,6 +35,8 @@ Tee_Test(name_of_test_here) {
 The name of the test given must be unique. You may have any number of
 assertions per test.
 
+### Sub-tests
+
 ```cpp
 Tee_Test(name_of_test) {
 	//do setup
@@ -47,6 +49,11 @@ Tee_Test(name_of_test) {
 
 Subtests are also possible, if you want to group tests together, maybe to
 share objects between them
+
+### Integrating with a project
+
+Just include the header file wherever you want to write tests. Nothing else
+is needed.
 
 ### Testing the defined tests
 
@@ -70,19 +77,15 @@ int main() {
 
 See the [code](main.cpp) for a version with testable tests!
 
-### Integrating with a project
-
-Just include the header file wherever you want to write tests. Nothing else
-is needed.
-
 Building Tests
 --------------
 
-The included tests can be run simply by compiling main.cpp.
-It has been tested with g++ version 5.4.
-You might build it with the command `g++ main.cpp -std=c++14 -o tee`,
+The included tests can be built with the command
+`g++ main.cpp -std=c++14 -o tee`,
 or just use `make`.
 Tests can be run with `./tee` or `make test`.
+There are some tests which intentionslly fail, as what we're testing is the
+framework itself!
 
 Future Work
 -----------
