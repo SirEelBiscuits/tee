@@ -78,7 +78,9 @@ Building Tests
 
 The included tests can be run simply by compiling main.cpp.
 It has been tested with g++ version 5.4.
-You might build it with the command `g++ main.cpp -std=c++14 -o tee`.
+You might build it with the command `g++ main.cpp -std=c++14 -o tee`,
+or just use `make`.
+Tests can be run with `./tee` or `make test`.
 
 Future Work
 -----------
